@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="webmovie" Class="dbWebFilmDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=TRONGNGUYEN\SQLEXPRESS;Initial Catalog=webmovie;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="webmovieConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AdminPro" Member="AdminPros">
+    <Type Name="AdminPro">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_admin" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="mat_khau_admin" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Phim" Member="Phims">
+    <Type Name="Phim">
+      <Column Name="id_phim" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_phim" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="anh_bia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="mo_ta" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="trailer" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="id_trang_thai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_quoc_gia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Phim_Phim_Dienvien" Member="Phim_Dienviens" ThisKey="id_phim" OtherKey="id_phim" Type="Phim_Dienvien" />
+      <Association Name="Phim_DanhGia" Member="DanhGias" ThisKey="id_phim" OtherKey="id_phim" Type="DanhGia" />
+      <Association Name="Phim_ChiTietLoai" Member="ChiTietLoais" ThisKey="id_phim" OtherKey="id_phim" Type="ChiTietLoai" />
+      <Association Name="Phim_BinhLuan" Member="BinhLuans" ThisKey="id_phim" OtherKey="id_phim" Type="BinhLuan" />
+      <Association Name="QuocGia_Phim" Member="QuocGia" ThisKey="id_quoc_gia" OtherKey="id_quoc_gia" Type="QuocGia" IsForeignKey="true" />
+      <Association Name="TrangThai_Phim" Member="TrangThai" ThisKey="id_trang_thai" OtherKey="id_trang_thai" Type="TrangThai" IsForeignKey="true" />
+      <Association Name="NamPhatHanh_Phim" Member="NamPhatHanh" ThisKey="id_nam" OtherKey="id_nam" Type="NamPhatHanh" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Phim_Dienvien" Member="Phim_Dienviens">
+    <Type Name="Phim_Dienvien">
+      <Column Name="id_phim" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_dien_vien" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Phim_Phim_Dienvien" Member="Phim" ThisKey="id_phim" OtherKey="id_phim" Type="Phim" IsForeignKey="true" />
+      <Association Name="DienVien_Phim_Dienvien" Member="DienVien" ThisKey="id_dien_vien" OtherKey="id_dien_vien" Type="DienVien" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QuocGia" Member="QuocGias">
+    <Type Name="QuocGia">
+      <Column Name="id_quoc_gia" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_quoc_gia" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="QuocGia_Phim" Member="Phims" ThisKey="id_quoc_gia" OtherKey="id_quoc_gia" Type="Phim" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TrangThai" Member="TrangThais">
+    <Type Name="TrangThai">
+      <Column Name="id_trang_thai" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_trang_thai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="TrangThai_Phim" Member="Phims" ThisKey="id_trang_thai" OtherKey="id_trang_thai" Type="Phim" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NguoiDung" Member="NguoiDungs">
+    <Type Name="NguoiDung">
+      <Column Name="id_nguoi_dung" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_nguoi_dung" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tai_khoan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="mat_khau" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="NguoiDung_DanhGia" Member="DanhGias" ThisKey="id_nguoi_dung" OtherKey="id_nguoi_dung" Type="DanhGia" />
+      <Association Name="NguoiDung_BinhLuan" Member="BinhLuans" ThisKey="id_nguoi_dung" OtherKey="id_nguoi_dung" Type="BinhLuan" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NamPhatHanh" Member="NamPhatHanhs">
+    <Type Name="NamPhatHanh">
+      <Column Name="id_nam" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nam_phat_hanh" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="NamPhatHanh_Phim" Member="Phims" ThisKey="id_nam" OtherKey="id_nam" Type="Phim" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Loai" Member="Loais">
+    <Type Name="Loai">
+      <Column Name="id_loai" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_loai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Loai_ChiTietLoai" Member="ChiTietLoais" ThisKey="id_loai" OtherKey="id_loai" Type="ChiTietLoai" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DienVien" Member="DienViens">
+    <Type Name="DienVien">
+      <Column Name="id_dien_vien" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_dien_vien" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="anh_bia" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="DienVien_Phim_Dienvien" Member="Phim_Dienviens" ThisKey="id_dien_vien" OtherKey="id_dien_vien" Type="Phim_Dienvien" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DanhGia" Member="DanhGias">
+    <Type Name="DanhGia">
+      <Column Name="id_nguoi_dung" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_phim" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="diem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tong_diem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Phim_DanhGia" Member="Phim" ThisKey="id_phim" OtherKey="id_phim" Type="Phim" IsForeignKey="true" />
+      <Association Name="NguoiDung_DanhGia" Member="NguoiDung" ThisKey="id_nguoi_dung" OtherKey="id_nguoi_dung" Type="NguoiDung" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChiTietLoai" Member="ChiTietLoais">
+    <Type Name="ChiTietLoai">
+      <Column Name="id_phim" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_loai" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Loai_ChiTietLoai" Member="Loai" ThisKey="id_loai" OtherKey="id_loai" Type="Loai" IsForeignKey="true" />
+      <Association Name="Phim_ChiTietLoai" Member="Phim" ThisKey="id_phim" OtherKey="id_phim" Type="Phim" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BinhLuan" Member="BinhLuans">
+    <Type Name="BinhLuan">
+      <Column Name="id_binh_luan" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_nguoi_dung" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_phim" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="noi_dung" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ngay_binh_luan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="NguoiDung_BinhLuan" Member="NguoiDung" ThisKey="id_nguoi_dung" OtherKey="id_nguoi_dung" Type="NguoiDung" IsForeignKey="true" />
+      <Association Name="Phim_BinhLuan" Member="Phim" ThisKey="id_phim" OtherKey="id_phim" Type="Phim" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

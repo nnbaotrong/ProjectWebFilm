@@ -1,0 +1,95 @@
+﻿@model IEnumerable<DoAnWebFilm.Models.Phim>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ten_phim)*@
+            Tên Phim
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.anh_bia)*@
+            Ảnh Bìa
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.mo_ta)*@
+            Mô Tả
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.trailer)*@
+            Trailer
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.id_trang_thai)*@
+            Trạng thái
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.id_quoc_gia)*@
+            Quốc gia
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.id_nam)*@
+            Năm phát hành
+        </th>
+        <th>
+            Thể Loại
+        </th>
+        <th>
+            Diễn Viên
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ten_phim)
+    </td>
+    <td>
+       <img class="img-thumbnail" src="@Url.Content("~/HinhPhim/"+  item.anh_bia)" alt="Loading..."/>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.mo_ta)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.trailer)
+    </td>
+    <td>
+        @item.TrangThai.ten_trang_thai
+    </td>
+    <td>
+        @item.QuocGia.ten_quoc_gia
+    </td>
+    <td>
+        @item.NamPhatHanh.nam_phat_hanh
+    </td>
+    <td>
+        @foreach (var filmType in item.ChiTietLoais)
+        {
+            <p style="margin-right: 10px;  ">@filmType.Loai.ten_loai</p>
+        }
+    </td>
+    <td>
+        @foreach (var filmDienVien in item.Phim_Dienviens)
+        {
+            <p style="margin-right: 10px">@filmDienVien.DienVien.ten_dien_vien</p> 
+        }
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.id_phim }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id_phim }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.id_phim })
+    </td>
+</tr>
+}
+
+</table>
