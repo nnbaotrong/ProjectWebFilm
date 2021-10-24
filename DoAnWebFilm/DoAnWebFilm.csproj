@@ -136,6 +136,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminQuocGiaController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTrangThaiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +177,19 @@
     <Content Include="Areas\Admin\Views\AdminDienVien\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDienVien\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminPhim\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminNamPhatHanh\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminNamPhatHanh\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminNamPhatHanh\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTrangThai\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTrangThai\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTrangThai\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTrangThai\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminQuocGia\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminQuocGia\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminQuocGia\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminQuocGia\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminNamPhatHanh\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminNguoiDung\Index.cshtml" />
     <None Include="Models\dbWebFilm.dbml.layout">
       <DependentUpon>dbWebFilm.dbml</DependentUpon>
     </None>
@@ -211,12 +225,9 @@
     <Folder Include="Areas\Admin\Views\AdminBinhLuan\" />
     <Folder Include="Areas\Admin\Views\AdminDanhGia\" />
     <Folder Include="Areas\Admin\Views\AdminManager\" />
-    <Folder Include="Areas\Admin\Views\AdminNamPhatHanh\" />
-    <Folder Include="Areas\Admin\Views\AdminNguoiDung\" />
-    <Folder Include="Areas\Admin\Views\AdminQuocGia\" />
-    <Folder Include="Areas\Admin\Views\AdminTrangThai\" />
     <Folder Include="HinhDienVien\" />
     <Folder Include="HinhPhim\" />
+    <Folder Include="Views\NguoiDung\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DoAnWebFilm.Models.NguoiDung>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ten_nguoi_dung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tai_khoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mat_khau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ten_nguoi_dung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tai_khoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mat_khau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_nguoi_dung }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_nguoi_dung }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_nguoi_dung })
+        </td>
+    </tr>
+}
+
+</table>
