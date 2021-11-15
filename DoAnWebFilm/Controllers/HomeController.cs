@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAnWebFilm.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,25 @@ namespace DoAnWebFilm.Controllers
 {
     public class HomeController : Controller
     {
+
+        dbWebFilmDataContext db = new dbWebFilmDataContext();
+        private List<Phim> layPhimMoi(int count)
+        {
+            return db.Phims.OrderByDescending(a => a.id_phim).Take(count).ToList();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var phimMoi = layPhimMoi(12);
+            return View(phimMoi);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var phim = from p in db.Phims
+                       where p.id_phim == id
+                       select p;
+            return View(phim.Single());
         }
 
         public ActionResult About()

@@ -1,31 +1,501 @@
-﻿@{
+﻿@model IEnumerable<DoAnWebFilm.Models.Phim>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<!--Banner-->
+<section>
+    <div class="container-md my-3">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img src="~/Banner/banner1.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3 class="text-white">Avenger: EndGame</h3>
+
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/Banner/banner2.jpg" class=" d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3 class="text-white">Spiderman: No Way Home</h3>
+
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Banner/banner3.jpg" class=" d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3 class="text-white">Thor 3</h3>
+
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+</section>
+
+
+<section>
+    <div class="container-md">
+        <div class="row gx-2">
+            <div class="col-12 col-lg-9 pt-1">
+                <h5 class="text-warning">PHIM ĐỀ CỬ</h5>
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 gy-3 gx-2 g-gl-0 pb-3 ">
+
+                    @foreach (var phim in Model)
+                    {
+
+                        <div class="col">
+
+                            <a href="@Url.Action("Details","Home", new { id= phim.id_phim} )" style="text-decoration:none">
+
+                                <div class="card bg-dark text-white">
+                                    <img src="~/HinhPhim/@phim.anh_bia" class="card-img" alt="...">
+                                    <div class="card-img-overlay">
+                                        <p class="card-title d-inline px-1 rounded bg-danger">Full HD</p>
+
+                                    </div>
+                                    <div class="card-header">
+                                        <p>@phim.ten_phim</p>
+                                    </div>
+                                </div>
+                            </a>
+                            
+
+                        </div>
+                    }
+
+                </div>
+
+
+                
+                <nav aria-label="Page navigation example ">
+                    <ul class="pagination justify-content-center ">
+                        <li class="page-item disabled">
+                            <a class="page-link">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+
+
+            <div class="col-12 col-lg-3 d-none d-lg-block ">
+                <div class=" p-1   ">
+                    <h5 class="text-warning">PHIM SẮP CHIẾU</h5>
+                    <div class="bg-dark p-2 rounded">
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Iron Man 3.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Iron Man 3</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">673 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Iron Man 2.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Iron Man 2</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">453 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Iron Man.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Iron Man</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">479 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/The Eternals.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>The Eternals</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">543 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/The Incredible Hulk.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Hulk</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">369 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class=" p-1   ">
+                    <h5 class="text-warning">PHIM HOT TRONG TUẦN</h5>
+                    <div class="bg-dark p-2 rounded">
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Black Widow.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Black Widow</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">873 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Thor Love and Thunder.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Thor 2</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">562 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Thor Ragnarok.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Thor 3</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">870 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Thor.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Thor</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">950 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Ant-Man.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Ant-Man</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">879 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+                <div class=" p-1   ">
+                    <h5 class="text-warning">PHIM HOT TRONG THÁNG</h5>
+                    <div class="bg-dark p-2 rounded">
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Black Widow.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Black Widow</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">873 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Thor Love and Thunder.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Thor 2</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">562 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Thor Ragnarok.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Thor 3</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">870 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Thor.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Thor</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">950 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-dark bg-dark mb-1">
+                            <div class="row g-0">
+                                <div class="col-3 ">
+                                    <img src="~/HinhPhim/Ant-Man.jpg" class="img-fluid rounded-start h-100" alt="...">
+                                </div>
+                                <div class="col-9">
+                                    <div class="card-header fw-bold text-white px-2 py-0">
+                                        <small>Ant-Man</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                                    </div>
+                                    <div class="card-body px-2 py-0">
+                                        <small class="text-white">879 lượt xem</small>
+                                        <div class="text-warning">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div>
+
+
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</section>

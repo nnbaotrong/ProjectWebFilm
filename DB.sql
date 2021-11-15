@@ -60,6 +60,7 @@ create table Phim(
 id_phim int identity primary key,
 ten_phim nvarchar(50),
 anh_bia nvarchar(100),
+link_phim nvarchar(100),
 mo_ta nvarchar(200),
 trailer nvarchar(100),
 id_trang_thai int,
@@ -173,10 +174,10 @@ insert into AdminPro values (N'admin',N'123')
 delete Phim
 DBCC CHECKIDENT (Phim, RESEED, 0)
 DBCC CHECKIDENT (Phim)
-insert into Phim values (N'Cà la mun tê',N'bp1.jpg',N'Phim Hay vler','youtube',1,1,1)
-insert into Phim values (N'Xa qua ni ca',N'bp2.jpg',N'Phim Hay vler','youtube',1,5,2)
-insert into Phim values (N'Kim mu chi',N'bp3.jpg',N'Phim Hay vler','youtube',1,4,1)
-insert into Phim values (N'Ni hao',N'bp4.jpg',N'Phim Hay vler','youtube',1,2,1)
+insert into Phim values (N'Iron Man',N'Iron Man.jpg','https://www.youtube.com/embed/y_-1uiB2T9Y',N'Phim Hay vler','https://www.youtube.com/embed/8ugaeA-nMTc',1,1,1)
+insert into Phim values (N'Iron Man 2',N'Iron Man 2.jpg','https://www.youtube.com/embed/y_-1uiB2T9Y',N'Phim Hay vler','https://www.youtube.com/embed/BoohRoVA9WQ',1,5,2)
+insert into Phim values (N'Iron Man 3',N'Iron Man 3.jpg','https://www.youtube.com/embed/y_-1uiB2T9Y',N'Phim Hay vler','https://www.youtube.com/embed/Ke1Y3P9D0Bc',1,4,1)
+insert into Phim values (N'Captain America 2',N'Captain America 2.jpg','https://www.youtube.com/embed/y_-1uiB2T9Y',N'Phim Hay vler','https://www.youtube.com/embed/7SlILk2WMTI',1,2,1)
 
 delete ChiTietLoai
 insert into ChiTietLoai values (1,1)

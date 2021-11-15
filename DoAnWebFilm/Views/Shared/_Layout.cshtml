@@ -3,40 +3,162 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>Film BT</title>
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+
+    <script src="~/Scripts/js/bootstrap.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+    <!-- Header-->
+    <header class=" py-3 bg-dark">
+        <div class="container-md ">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+             
+                    @Html.ActionLink("FILM BT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand fs-3" })
+                    <div>
+                        <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <span class="fas fa-search "></span>
+                        </button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="fas fa-list"></span>
+                        </button>
+                        <button class="navbar-toggler bg-dark"> <i class="fas fa-sign-in-alt text-white"></i></button>
+
+                    </div>
+
+
+
+                    <div class="collapse navbar-collapse  justify-content-end" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link active" })
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Thể Loại
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="category.html">Hành Động</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Viễn Tưởng</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Kinh Dị</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Quốc Gia</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Năm Phát Hành</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Trailer</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+                    <div class="collapse navbar-collapse justify-content-center " id="navbarTogglerDemo02">
+
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <button class="navbar-toggler bg-dark d-none d-lg-block "> <i class="fas fa-sign-in-alt "></i></button>
+
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+    @RenderBody()
+
+
+
+    <section class="py-4 bg-dark text-white-50">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gy-4 gy-lg-0">
+                <div class="col">
+                    <h6 class="mb-3 mb-md-4 fw-bold text-white">Thông tin về FILM BT</h6>
+                    <p>
+                        Xem phim mới miễn phí nhanh chất lượng cao. Xem Phim online Việt Sub, Thuyết minh, lồng tiếng chất lượng
+                        HD. Xem phim nhanh online chất lượng cao
+                    </p>
+
+                    <ul class="list-inline mt-5">
+                        <li class="list-inline-item">
+                            <a href="#" class="p-2 rounded bg-black link-light"><i class="fab fa-fw fa-facebook-square"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="p-2 rounded bg-black link-light"><i class="fab fa-fw fa-google-plus-g"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="p-2 rounded bg-black link-light"><i class="fab fa-fw fa-linkedin"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="p-2 rounded bg-black link-light"><i class="fab fa-fw fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="p-2 rounded bg-black link-light"><i class="fab fa-fw fa-vk"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h6 class="mb-3 mb-md-4 fw-bold text-white">Thể Loại</h6>
+                    <ul class="list">
+                        <li><a href="#">Phim Hành Động</a></li>
+
+                        <li><a href="#">Phim Viễn Tưởng</a></li>
+                        <li><a href="#">Phim Kinh Dị</a></li>
+                        <li><a href="#">Phim Hài Hước</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h6 class="mb-3 mb-md-4 fw-bold text-white">Phim Mới</h6>
+                    <ul class="list">
+                        <li><a href="#">Phim Sắp Chiếu</a></li>
+                        <li><a href="#">Phim Hot Nhất Tuần</a></li>
+                        <li><a href="#">Phim Thuyết Minh</a></li>
+
+                    </ul>
+                </div>
+                <div class="col">
+                    <h6 class="mb-3 mb-md-4 fw-bold text-white">Liên Hệ</h6>
+                    <p>
+                        Email liên hệ:
+                        nnbaotrong@gmail.com
+                    </p>
+                    <form class="email-subscribe">
+                        <input type="text" class="form-control mb-2" placeholder="Name" />
+                        <input type="email" class="form-control mb-2" placeholder="Email" />
+                        <button type="submit" class="btn btn-primary">SUBMIT</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    </section>
+    <!--Footer-->
+    <footer class="py-3 bg-black text-white-50">
+        <div class="container">
+            <p class="mb-0">Copyright © 2018 - All Rights Reserved - Domain Name</p>
+        </div>
+    </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
 </body>
 </html>
