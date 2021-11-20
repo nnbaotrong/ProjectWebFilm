@@ -17,7 +17,7 @@
         <div class="container-md ">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-             
+
                     @Html.ActionLink("FILM BT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand fs-3" })
                     <div>
                         <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
@@ -47,28 +47,38 @@
                                     Thể Loại
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="category.html">Hành Động</a></li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Viễn Tưởng</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Kinh Dị</a>
-                                    </li>
+                                    <li>@Html.Action("TypeMovie", "Home")</li>
+
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Quốc Gia</a>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Quốc Gia
+                                </a>dân tộc
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li>@Html.Action("Country", "Home")</li>
+
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Năm Phát Hành</a>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Năm Phát Hành
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li>@Html.Action("ReleaseYear", "Home")</li>
+
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Trailer</a>
-                            </li>
+                         
 
 
                         </ul>
                     </div>
+              
 
                     <div class="collapse navbar-collapse justify-content-center " id="navbarTogglerDemo02">
 
