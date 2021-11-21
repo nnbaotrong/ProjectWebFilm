@@ -136,6 +136,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminQuocGiaController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTrangThaiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1954,6 +1955,8 @@
     <Content Include="Views\Home\ReleaseYear.cshtml" />
     <Content Include="Views\Home\MovieForCountry.cshtml" />
     <Content Include="Views\Home\MovieForReleaseYear.cshtml" />
+    <Content Include="Views\NguoiDung\Dangky.cshtml" />
+    <Content Include="Views\NguoiDung\Dangnhap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1963,7 +1966,6 @@
     <Folder Include="Areas\Admin\Views\AdminManager\" />
     <Folder Include="HinhDienVien\" />
     <Folder Include="HinhPhim\" />
-    <Folder Include="Views\NguoiDung\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

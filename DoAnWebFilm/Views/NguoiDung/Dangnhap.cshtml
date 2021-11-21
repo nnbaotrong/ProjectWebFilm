@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Dangnhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class=" mx-5 ">
+        <div class="bg-dark p-3 my-2 mx-5 mb-5 text-white">
+            <div>
+                <h4>Đăng nhập thành viên</h4>
+            </div>
+        </div>
+        <br />
+        <div class="bg-dark mx-5 px-5 py-2 mb-5">
+            <h4 style="color:red;text-align:center">@ViewBag.Thongbao</h4>
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+
+                <div class="pt-5  px-5 mx-5">
+                    @Html.TextBox("TenDN", "", new { @class = "form-control", @placeholder = "Tên đăng nhập" })
+                    <p style="color:red">@ViewData["Loi1"]</p>
+                </div>
+
+                <div class="pt-2  px-5 mx-5">
+                    @Html.Password("MatKhau", "", new { @class = "form-control", @placeholder = "Mật khẩu" })
+                    <p style="color:red">@ViewData["Loi2"]</p>
+                </div>
+                <div class="pt-2  px-5 mx-5">
+                    <input class="btn btn-primary " type="submit" value="Đăng Nhập" />
+                </div>
+            }
+
+            <div class="pt-2  px-5 mx-5 mb-5">
+                <a href="#" class="forgot-password">
+                    Quên mật khẩu?
+                </a>
+
+                @Html.ActionLink("Đăng ký", "Dangky", "NguoiDung", null, new { @class = "forgot-password" })
+            </div>
+
+        </div>
+ 
+        <br />
+
+    </div>
+</div>

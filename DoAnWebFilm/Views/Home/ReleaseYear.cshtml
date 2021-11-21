@@ -1,0 +1,9 @@
+﻿@model IEnumerable<DoAnWebFilm.Models.NamPhatHanh>
+
+@foreach (var releaseYear in Model)
+{
+
+    <a href="@Url.Action("MovieForReleaseYear","Home", new { id= releaseYear.id_nam} )" class="dropdown-item">
+        @releaseYear.nam_phat_hanh
+    </a>
+}

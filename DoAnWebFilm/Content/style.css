@@ -1,0 +1,19 @@
+body {
+  background-color: slategray;
+}
+
+.list {
+  padding-left: 0px;
+}
+
+.list li {
+  list-style-type: none;
+}
+
+.list a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+}
+.list :hover {
+  color: white;
+}

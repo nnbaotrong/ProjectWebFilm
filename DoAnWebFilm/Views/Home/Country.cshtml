@@ -1,0 +1,10 @@
+﻿
+@model IEnumerable<DoAnWebFilm.Models.QuocGia>
+
+@foreach (var country in Model)
+{
+
+<a href="@Url.Action("MovieForCountry","Home", new { id= country.id_quoc_gia} )" class="dropdown-item">
+    @country.ten_quoc_gia
+</a>
+}

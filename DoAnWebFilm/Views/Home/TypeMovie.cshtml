@@ -1,0 +1,9 @@
+﻿@model IEnumerable<DoAnWebFilm.Models.Loai>
+
+@foreach (var type in Model)
+{
+  
+<a href="@Url.Action("MovieForType","Home", new { id= type.id_loai} )" class="dropdown-item">
+    @type.ten_loai
+</a>
+        }
