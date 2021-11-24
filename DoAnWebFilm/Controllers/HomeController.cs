@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using PagedList;
+using PagedList.Mvc;
+
 namespace DoAnWebFilm.Controllers
 {
     public class HomeController : Controller
@@ -17,10 +20,13 @@ namespace DoAnWebFilm.Controllers
         }
 
         //Index
-        public ActionResult Index()
+        public ActionResult Index(int ? page)
         {
+            int pageSize = 2;
+            int pageNum = (page ?? 1);
+
             var phimMoi = layPhimMoi(12);
-            return View(phimMoi);
+            return View(phimMoi.ToPagedList(pageNum,pageSize));
         }
 
         //Details
