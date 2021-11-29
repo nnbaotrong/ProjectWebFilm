@@ -66,6 +66,9 @@ namespace DoAnWebFilm.Models
     partial void InsertTrangThai(TrangThai instance);
     partial void UpdateTrangThai(TrangThai instance);
     partial void DeleteTrangThai(TrangThai instance);
+    partial void InsertBanner(Banner instance);
+    partial void UpdateBanner(Banner instance);
+    partial void DeleteBanner(Banner instance);
     #endregion
 		
 		public dbWebFilmDataContext() : 
@@ -191,6 +194,14 @@ namespace DoAnWebFilm.Models
 			get
 			{
 				return this.GetTable<TrangThai>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Banner> Banners
+		{
+			get
+			{
+				return this.GetTable<Banner>();
 			}
 		}
 	}
@@ -2391,6 +2402,116 @@ namespace DoAnWebFilm.Models
 		{
 			this.SendPropertyChanging();
 			entity.TrangThai = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Banner")]
+	public partial class Banner : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_banner;
+		
+		private string _ten_banner;
+		
+		private string _hinh_banner;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_bannerChanging(int value);
+    partial void Onid_bannerChanged();
+    partial void Onten_bannerChanging(string value);
+    partial void Onten_bannerChanged();
+    partial void Onhinh_bannerChanging(string value);
+    partial void Onhinh_bannerChanged();
+    #endregion
+		
+		public Banner()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_banner", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_banner
+		{
+			get
+			{
+				return this._id_banner;
+			}
+			set
+			{
+				if ((this._id_banner != value))
+				{
+					this.Onid_bannerChanging(value);
+					this.SendPropertyChanging();
+					this._id_banner = value;
+					this.SendPropertyChanged("id_banner");
+					this.Onid_bannerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ten_banner", DbType="NVarChar(50)")]
+		public string ten_banner
+		{
+			get
+			{
+				return this._ten_banner;
+			}
+			set
+			{
+				if ((this._ten_banner != value))
+				{
+					this.Onten_bannerChanging(value);
+					this.SendPropertyChanging();
+					this._ten_banner = value;
+					this.SendPropertyChanged("ten_banner");
+					this.Onten_bannerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hinh_banner", DbType="NVarChar(100)")]
+		public string hinh_banner
+		{
+			get
+			{
+				return this._hinh_banner;
+			}
+			set
+			{
+				if ((this._hinh_banner != value))
+				{
+					this.Onhinh_bannerChanging(value);
+					this.SendPropertyChanging();
+					this._hinh_banner = value;
+					this.SendPropertyChanged("hinh_banner");
+					this.Onhinh_bannerChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

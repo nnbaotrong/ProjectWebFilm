@@ -22,10 +22,10 @@ namespace DoAnWebFilm.Controllers
         //Index
         public ActionResult Index(int ? page)
         {
-            int pageSize = 2;
+            int pageSize = 12;
             int pageNum = (page ?? 1);
 
-            var phimMoi = layPhimMoi(12);
+            var phimMoi = layPhimMoi(100);
             return View(phimMoi.ToPagedList(pageNum,pageSize));
         }
 
@@ -52,10 +52,16 @@ namespace DoAnWebFilm.Controllers
             var type = from t in db.Loais select t;
             return PartialView(type);
         }
-        public ActionResult MovieForType(int id)
+        public ActionResult MovieForType(int id, int? page)
         {
-            var movie = from m in db.Phims where m.id_phim == id select m;
-            return View(movie);
+            int pageSize = 12;
+            int pageNum = (page ?? 1);
+
+            var movie = from m in db.Phims 
+                        join ml in db.ChiTietLoais
+                        on m.id_phim equals ml.id_phim
+                        where ml.id_loai == id select m;
+            return View(movie.ToPagedList(pageNum, pageSize));
         }
 
         //Country
@@ -64,10 +70,13 @@ namespace DoAnWebFilm.Controllers
             var country = from c in db.QuocGias select c;
             return PartialView(country);
         }
-        public ActionResult MovieForCountry(int id)
+        public ActionResult MovieForCountry(int id, int? page)
         {
+            int pageSize = 12;
+            int pageNum = (page ?? 1);
+
             var movie = from m in db.Phims where m.id_quoc_gia == id select m;
-            return View(movie);
+            return View(movie.ToPagedList(pageNum, pageSize));
         }
 
         //Release year
@@ -76,10 +85,47 @@ namespace DoAnWebFilm.Controllers
             var releaseYear = from ry in db.NamPhatHanhs select ry;
             return PartialView(releaseYear);
         }
-        public ActionResult MovieForReleaseYear(int id)
+        public ActionResult MovieForReleaseYear(int id, int? page)
         {
+            int pageSize = 12;
+            int pageNum = (page ?? 1);
             var movie = from m in db.Phims where m.id_nam == id select m;
-            return View(movie);
+            return View(movie.ToPagedList(pageNum, pageSize));
         }
+
+        //Search
+        public ActionResult Search(String searchMovie, int? page)
+        {
+            int pageSize = 12;
+            int pageNum = (page ?? 1);
+      
+            var phim = from p in db.Phims
+                       where p.ten_phim.Contains(searchMovie)
+                       select p;
+            return View(phim.ToPagedList(pageNum, pageSize));
+        }
+
+        //Banner
+        public ActionResult Banner()
+        {
+            var banner = from b in db.Banners select b;
+            return PartialView(banner);
+        }
+
+
+        //Top Moive
+        public ActionResult TopMovie()
+        {
+            var topMovie = layPhimMoi(5);
+            return PartialView(topMovie);
+        }
+
+        public ActionResult MovieMore()
+        {
+            var movieMore = layPhimMoi(12);
+            return PartialView(movieMore);
+        }
+
+
     }
 }

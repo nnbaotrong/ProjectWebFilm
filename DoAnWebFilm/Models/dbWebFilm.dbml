@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="webmovie" Class="dbWebFilmDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=TRONGNGUYEN\SQLEXPRESS;Initial Catalog=webmovie;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="webmovieConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-A5LPVAH\SQLEXPRESS;Initial Catalog=webmovie;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="webmovieConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AdminPro" Member="AdminPros">
     <Type Name="AdminPro">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -109,6 +109,13 @@
       <Column Name="id_trang_thai" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ten_trang_thai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="TrangThai_Phim" Member="Phims" ThisKey="id_trang_thai" OtherKey="id_trang_thai" Type="Phim" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Banner" Member="Banners">
+    <Type Name="Banner">
+      <Column Name="id_banner" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_banner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="hinh_banner" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

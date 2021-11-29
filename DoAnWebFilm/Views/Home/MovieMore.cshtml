@@ -1,0 +1,24 @@
+﻿
+
+@model IEnumerable<DoAnWebFilm.Models.Phim>
+
+@foreach (var movieMore in Model)
+{
+
+    <a href="@Url.Action("Details","Home", new { id= movieMore.id_phim} )" >
+        <div class="col">
+            <div class="card bg-dark text-white">
+                <img  src="@Url.Content("~/HinhPhim/"+  movieMore.anh_bia)" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <p class="card-title d-inline px-1 rounded bg-danger">Full HD</p>
+
+                </div>
+                <div class="card-header">
+                    <p>@movieMore.ten_phim</p>
+                </div>
+            </div>
+
+        </div>
+    </a>
+}
+

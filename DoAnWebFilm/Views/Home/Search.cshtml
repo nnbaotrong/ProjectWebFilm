@@ -1,24 +1,21 @@
 ﻿
+
 @using PagedList.Mvc;
 @using DoAnWebFilm.Models
 @model PagedList.PagedList<Phim>
+
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@Html.Action("Banner", "Home")
 <section>
     <div class="container-md">
         <div class="row gx-2">
             <div class="col-12 col-lg-9 pt-1">
-
-
-
-
-
-                <h5 class="text-warning">PHIM ĐỀ CỬ</h5>
+                <h5 class="text-warning">KẾT QUẢ TÌM KIẾM</h5>
                 <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 gy-3 gx-2 g-gl-0 pb-3 ">
+
                     @foreach (var phim in Model)
                     {
 
@@ -43,23 +40,16 @@
                     }
 
                 </div>
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
 
+
+
+                @Html.PagedListPager(Model, page => Url.Action("MovieForCountry", new { page = page }))
             </div>
 
 
+
             <div class="col-12 col-lg-3 d-none d-lg-block ">
-                <div class=" p-1   ">
-                    <h5 class="text-warning">PHIM MỚI</h5>
-                    <div class="bg-dark p-2 rounded">
-
-                        @Html.Action("TopMovie", "Home")
-
-                    </div>
-                </div>
-
-
-
+                @Html.Action("TopMovie", "Home")
 
             </div>
         </div>

@@ -15,38 +15,41 @@
         @using (Html.BeginForm())
         {
             @Html.ValidationSummary(true)
-        <div class="mx-5 py-5 my-5 px-5">
+            <div class="mx-5 py-5 my-5 px-5">
 
-            <div class="mx-5 py-1 px-5">
-                @Html.TextBox("HotenND", "", new { @class = "form-control", @placeholder = "Họ tên" })
-                @ViewData["Loi1"]
+                <div class="mx-5 py-1 px-5">
+                    @Html.TextBox("HotenND", "", new { @class = "form-control", @minlength = 0, @maxlength = 50, @placeholder = "Họ tên" })
+                    <p class="text-warning">@ViewData["Loi1"]</p>
+                </div>
+                <div class="mx-5 py-1 px-5">
+                    @Html.TextBox("TenDN", "", new { @class = "form-control", @minlength = 0, @maxlength = 50, @placeholder = "Tên đăng nhập" })
+                    <p class="text-warning">@ViewData["Loi2"]</p>
+                    <p class="text-warning">@ViewData["LoiTK"]</p>
+                </div>
+                <div class="mx-5 py-1 px-5">
+                    @Html.Password("Matkhau", "", new { @class = "form-control", @minlength = 0, @maxlength = 50, @placeholder = "Mật khẩu" })
+                    <p class="text-warning">@ViewData["Loi3"]</p>
+                </div>
+                <div class="mx-5 py-1 px-5">
+                    @Html.Password("Nhaplaimatkhau", "", new { @class = "form-control", @minlength = 0, @maxlength = 50, @placeholder = "Nhập lại mật khẩu" })
+                    <p class="text-warning">@ViewData["Loi4"]</p>
+                    <p class="text-warning">@ViewData["LoiMK"]</p>
+                </div>
+                <div class="mx-5 py-1 px-5">
+                    @Html.TextBox("Email", "", new { @class = "form-control", @minlength = 0, @maxlength = 50, @placeholder = "Email" })
+                    <p class="text-warning">@ViewData["Loi5"]</p>
+                    <p class="text-warning">@ViewData["LoiMAL"]</p>
+                </div>
+                <div class="mx-5 px-5">
+                    <input class="btn btn-primary " type="Submit" value="Đăng ký" />
+                </div>
             </div>
-            <div class="mx-5 py-1 px-5">
-                @Html.TextBox("TenDN", "", new { @class = "form-control", @placeholder = "Tên đăng nhập" })
-                @ViewData["Loi2"]
-            </div>
-            <div class="mx-5 py-1 px-5">
-                @Html.Password("Matkhau", "", new { @class = "form-control", @placeholder = "Mật khẩu" })
-                @ViewData["Loi3"]
-            </div>
-            <div class="mx-5 py-1 px-5">
-                @Html.Password("Nhaplaimatkhau", "", new { @class = "form-control", @placeholder = "Nhập lại mật khẩu" })
-                @ViewData["Loi4"]
-            </div>
-            <div class="mx-5 py-1 px-5">
-                @Html.TextBox("Email", "", new { @class = "form-control", @placeholder = "Email" })
-                @ViewData["Loi5"]
-            </div>
-            <div class="mx-5 px-5">
-                <input class="btn btn-primary " type="Submit" value="Đăng ký" />
-            </div>
-                                </div>
-                                }
+        }
 
-                            </div>
+    </div>
 
 
-        </div>
+</div>
 
 
 

@@ -47,13 +47,36 @@ namespace DoAnWebFilm.Controllers
             }
             else
             {
-                nd.ten_nguoi_dung = hoten;
-                nd.tai_khoan = tendn;
-                nd.mat_khau = matkhau;
-                nd.email = email;
-                db.NguoiDungs.InsertOnSubmit(nd);
-                db.SubmitChanges();
-                return RedirectToAction("Dangnhap");
+                NguoiDung tk = db.NguoiDungs.SingleOrDefault(n => n.tai_khoan == tendn );
+                NguoiDung mal = db.NguoiDungs.SingleOrDefault(n => n.email == email);
+                if (tk == null && mal == null)
+                {
+                    if (matkhau.Equals(nhaplaimatkhau))
+                    {
+                        nd.ten_nguoi_dung = hoten;
+                        nd.tai_khoan = tendn;
+                        nd.mat_khau = matkhau;
+                        nd.email = email;
+                        db.NguoiDungs.InsertOnSubmit(nd);
+                        db.SubmitChanges();
+                        return RedirectToAction("Dangnhap");
+                    }
+                    else
+                    {
+                        ViewData["LoiMK"] = "Mật khẩu nhập không giống";
+                    }
+                   
+                }
+               if(tk != null)
+                {
+                    ViewData["LoiTK"] = "Tên tài khoản tồn tại";
+                }
+                if (mal != null)
+                {
+                    ViewData["LoiMAL"] = "Email tồn tại";
+                }
+
+
             }
             return this.Dangky();
         }

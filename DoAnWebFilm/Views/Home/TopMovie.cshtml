@@ -1,0 +1,31 @@
+﻿
+@model IEnumerable<DoAnWebFilm.Models.Phim>
+
+@foreach (var topMovie in Model)
+{
+    <a href="@Url.Action("Details","Home", new { id= topMovie.id_phim} )" style="text-decoration:none">
+        <div class="card border-dark bg-dark mb-1">
+            <div class="row g-0">
+                <div class="col-3 ">
+                    <img src="@Url.Content("~/HinhPhim/"+  topMovie.anh_bia)" class="img-fluid rounded-start h-100" alt="...">
+                </div>
+                <div class="col-9">
+                    <div class="card-header fw-bold text-white px-2 py-0">
+                        <small>@topMovie.ten_phim</small> <span class="text-white float-end "><small class="bg-secondary px-1">Full HD</small></span>
+                    </div>
+                    <div class="card-body px-2 py-0">
+                        <small class="text-white">453 lượt xem</small>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+}

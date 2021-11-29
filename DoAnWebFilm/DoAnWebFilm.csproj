@@ -157,6 +157,7 @@
     <Content Include="Banner\banner1.jpg" />
     <Content Include="Banner\banner2.jpg" />
     <Content Include="Banner\banner3.jpg" />
+    <Content Include="BG\bg-haloween.png" />
     <Content Include="Content\css\bootstrap-grid.css" />
     <Content Include="Content\css\bootstrap-grid.min.css" />
     <Content Include="Content\css\bootstrap-grid.rtl.css" />
@@ -1852,11 +1853,6 @@
     <Content Include="Areas\Admin\Views\AdminQuocGia\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminNamPhatHanh\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminNguoiDung\Index.cshtml" />
-    <Content Include="Models\dbWebFilm.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbWebFilm.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Content\css\bootstrap-grid.css.map" />
     <Content Include="Content\css\bootstrap-grid.min.css.map" />
     <Content Include="Content\css\bootstrap-grid.rtl.css.map" />
@@ -1927,9 +1923,6 @@
     <Content Include="Content\fontawesome-free-5.15.4-web\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\fontawesome-free-5.15.4-web\webfonts\fa-solid-900.woff" />
     <Content Include="Content\fontawesome-free-5.15.4-web\webfonts\fa-solid-900.woff2" />
-    <None Include="Models\dbWebFilm.dbml.layout">
-      <DependentUpon>dbWebFilm.dbml</DependentUpon>
-    </None>
     <Content Include="Scripts\js\bootstrap.bundle.js" />
     <Content Include="Scripts\js\bootstrap.bundle.min.js" />
     <Content Include="Scripts\js\bootstrap.esm.js" />
@@ -1979,7 +1972,19 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Models\dbWebFilm.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbWebFilm.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\dbWebFilm.dbml.layout">
+      <DependentUpon>dbWebFilm.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\TopMovie.cshtml" />
+    <Content Include="Views\Home\Banner.cshtml" />
+    <Content Include="Views\Home\MovieMore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

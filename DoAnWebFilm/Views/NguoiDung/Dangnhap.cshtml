@@ -20,12 +20,12 @@
                 @Html.ValidationSummary(true)
 
                 <div class="pt-5  px-5 mx-5">
-                    @Html.TextBox("TenDN", "", new { @class = "form-control", @placeholder = "Tên đăng nhập" })
+                    @Html.TextBox("TenDN", "", new { @class = "form-control", @minlength = 0, @maxlength = 50, @placeholder = "Tên đăng nhập" })
                     <p style="color:red">@ViewData["Loi1"]</p>
                 </div>
 
                 <div class="pt-2  px-5 mx-5">
-                    @Html.Password("MatKhau", "", new { @class = "form-control", @placeholder = "Mật khẩu" })
+                    @Html.Password("MatKhau", "", new { @class = "form-control", @minlength = 0, @maxlength = 50, @placeholder = "Mật khẩu" })
                     <p style="color:red">@ViewData["Loi2"]</p>
                 </div>
                 <div class="pt-2  px-5 mx-5">

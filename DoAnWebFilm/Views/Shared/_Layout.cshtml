@@ -4,11 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Film BT</title>
+
     <link rel="stylesheet" href="~/Content/css/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/fontawesome-free-5.15.4-web/css/all.css">
-    <link rel="stylesheet" href="~/Content/style.css">
     <link rel="stylesheet" href="~/Content/PagedList.css">
+    <link rel="stylesheet" href="~/Content/style.css">
     <script src="~/Scripts/js/bootstrap.js"></script>
+
+    <style>
+       
+        </style>
+
 </head>
 <body>
 
@@ -51,18 +57,16 @@
 
                                 </ul>
                             </li>
-
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Quốc Gia
-                                </a>dân tộc
+                                </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <li>@Html.Action("Country", "Home")</li>
 
                                 </ul>
                             </li>
-
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
@@ -70,22 +74,21 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <li>@Html.Action("ReleaseYear", "Home")</li>
-
                                 </ul>
                             </li>
-                         
-
-
                         </ul>
                     </div>
-              
+
 
                     <div class="collapse navbar-collapse justify-content-center " id="navbarTogglerDemo02">
+                        <!-- Đoạn cần thêm -->
+                        @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "d-flex" })) // -- phần thay đổi
+                        {
+                            @Html.TextBox("searchMovie", "", new { @class = "form-control", @placeholder = "Tìm kiếm phim" })
+                            <input type="submit" class="btn btn-primary" value="Tìm kiếm" />
+                        }
+                        <!-- Kết thúc -->
 
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-primary" type="submit">Search</button>
-                        </form>
                     </div>
                     <a href="/NguoiDung/Dangnhap" class="navbar-toggler bg-dark d-none d-lg-block "> <i class="fas fa-sign-in-alt "></i></a>
 
@@ -95,8 +98,9 @@
     </header>
 
 
-
     @RenderBody()
+
+
 
 
 
@@ -144,7 +148,6 @@
                         <li><a href="#">Phim Sắp Chiếu</a></li>
                         <li><a href="#">Phim Hot Nhất Tuần</a></li>
                         <li><a href="#">Phim Thuyết Minh</a></li>
-
                     </ul>
                 </div>
                 <div class="col">
