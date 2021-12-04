@@ -1,0 +1,125 @@
+﻿@model DoAnWebFilm.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>NguoiDung</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id_nguoi_dung)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ten_nguoi_dung, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ten_nguoi_dung, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ten_nguoi_dung, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tai_khoan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tai_khoan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tai_khoan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mat_khau, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mat_khau, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.mat_khau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+
+<section>
+    <div class="container-md">
+        <div class="my-5 ">
+
+
+            <div class="card">
+                <div class="card-header bg-info d-flex justify-content-between">
+                    <div class="h4 mb-0 mt-1">
+                        Sửa tài khoản admin
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.id_nguoi_dung)
+                    <div class="mb-3">
+
+                        <div>
+                            <label class="form-label">Tên người dùng</label>
+
+                            @Html.EditorFor(model => model.ten_nguoi_dung, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ten_nguoi_dung, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label class="form-label">Tài khoản người dùng</label>
+
+                            @Html.EditorFor(model => model.tai_khoan, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.tai_khoan, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label class="form-label">Mật khẩu người dùng</label>
+
+                            @Html.EditorFor(model => model.mat_khau, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.mat_khau, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label class="form-label">Email</label>
+
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                        <div>
+                            <input type="submit" value="Lưu" class="btn btn-primary" />
+                            @Html.ActionLink("Thoát", "Index", null, new { @class = "btn btn-danger" })
+                        </div>
+
+                    }
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>

@@ -5,122 +5,108 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Phim</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        <p>Tên Phim</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ten_phim, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ten_phim, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <p>Ảnh Bìa Phim</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.anh_bia, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.anh_bia, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <p>Mô tả</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.mo_ta, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.mo_ta, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <p>trailer</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.trailer, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.trailer, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <p>Trạng Thái</p>
-        <div class="col-md-10">
-            @Html.DropDownList("id_trang_thai", null, new { @class = "form-control" })
 
 
-        </div>
-    </div>
 
-    <div class="form-group">
-        <p>Quốc Gia</p>
-        <div class="col-md-10">
-            @Html.DropDownList("id_quoc_gia", null, new { @class = "form-control" })
-
-        </div>
-    </div>
-
-    <div class="form-group">
-        <p>Năm Phát Hành</p>
-        <div class="col-md-10">
-            @Html.DropDownList("id_nam", null, new { @class = "form-control" })
-
-        </div>
-    </div>
-
-    <div class="form-group">
-        <p>Loại</p>
-        <div class="col-md-10">
-         
-
-
-            @foreach (var ma in ViewBag.ma_loai)
-            {
-                <div >
-                    <input id="@ma.id_loai" type="checkbox" name="skill" value="@ma.id_loai" />
-                    <label for="@ma.id_loai">
-                        @ma.ten_loai
-                    </label>
+<section>
+    <div class="container-md">
+        <div class="my-5 ">
+            <div class="card">
+                <div class="card-header bg-info d-flex justify-content-between">
+                    <div class="h4 mb-0 mt-1">
+                        Thêm phim
+                    </div>
                 </div>
-            }
+                <div class="card-body">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                      
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="mb-2">
+                                <label class="form-label fw-bold">Tên Phim</label>                            
+                                    @Html.EditorFor(model => model.ten_phim, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label fw-bold">Ảnh Bìa Phim</label>                       
+                                    @Html.EditorFor(model => model.anh_bia, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.anh_bia, "", new { @class = "text-danger" })                       
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label fw-bold">Mô tả</label>                   
+                                    @Html.EditorFor(model => model.mo_ta, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.mo_ta, "", new { @class = "text-danger" })                       
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label fw-bold">trailer</label>                       
+                                    @Html.EditorFor(model => model.trailer, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.trailer, "", new { @class = "text-danger" })                           
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label fw-bold">Trạng Thái</label>                        
+                                    @Html.DropDownList("id_trang_thai", null, new { @class = "form-control" })
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label fw-bold">Quốc Gia</label>                         
+                                    @Html.DropDownList("id_quoc_gia", null, new { @class = "form-control" })                    
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label fw-bold">Năm Phát Hành</label>                        
+                                    @Html.DropDownList("id_nam", null, new { @class = "form-control" })
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label fw-bold">Loại</label>
+                                <div class="">
+                                    @foreach (var ma in ViewBag.ma_loai)
+                                    {
+                                        <span class="me-2">
+                                            <input id="@ma.id_loai" type="checkbox" name="loai" value="@ma.id_loai" />
+                                            <label for="@ma.id_loai">
+                                                @ma.ten_loai
+                                            </label>
+                                        </span>
+                                    }
+
+                                </div>
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label fw-bold">Diễn Viên</label>
+                                <div class="">
+                                    @foreach (var ma in ViewBag.ma_dien_vien)
+                                    {
+                                        <span class="me-2">
+                                            <input id="@ma.id_dien_vien" type="checkbox" name="dienVien" value="@ma.id_dien_vien" />
+                                            <label for="@ma.id_dien_vien">
+                                                @ma.ten_dien_vien
+                                            </label>
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <input type="submit" value="Thêm" class="btn btn-primary" />
+                                @Html.ActionLink("Thoát", "Index", null, new { @class = "btn btn-danger" })
+                            </div>
+                         
+                        </div>
+                    }
+
+                </div>
+            </div>
 
         </div>
 
-     
-
     </div>
-
-    <div class="form-group">
-        <p>Diễn Viên</p>
-        <div class="col-md-10">
-           
-                @foreach (var ma in ViewBag.ma_dien_vien)
-                {
-                    <span  style="margin-right:10px" >
-                        <input id="@ma.id_dien_vien" type="checkbox" name="skill" value="@ma.id_dien_vien" />
-                        <label for="@ma.id_dien_vien">
-                            @ma.ten_dien_vien
-                        </label>
-                    </span>
-                }
-       
-           
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+</section>

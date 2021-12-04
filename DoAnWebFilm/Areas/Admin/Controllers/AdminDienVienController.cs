@@ -60,19 +60,19 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         }
 
         //Show detail actor
-        public ActionResult Details(int id)
-        {
-            //Lay ra doi tuong sach theo ma
-            DienVien dienvien = db.DienViens.SingleOrDefault(n => n.id_dien_vien == id);
-            ViewBag.id_dien_vien = dienvien.id_dien_vien;
+        //public ActionResult Details(int id)
+        //{
+        //    //Lay ra doi tuong sach theo ma
+        //    DienVien dienvien = db.DienViens.SingleOrDefault(n => n.id_dien_vien == id);
+        //    ViewBag.id_dien_vien = dienvien.id_dien_vien;
 
-            if (dienvien == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }
-            return View(dienvien);
-        }
+        //    if (dienvien == null)
+        //    {
+        //        Response.StatusCode = 404;
+        //        return null;
+        //    }
+        //    return View(dienvien);
+        //}
 
         //Delete Actor
         [HttpGet]

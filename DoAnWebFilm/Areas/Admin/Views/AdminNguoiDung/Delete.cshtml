@@ -1,4 +1,4 @@
-﻿@model DoAnWebFilm.Models.QuocGia
+﻿@model DoAnWebFilm.Models.NguoiDung
 
 @{
     ViewBag.Title = "Delete";
@@ -9,15 +9,39 @@
 
     <h3>Are you sure you want to delete this?</h3>
     <div>
-        <h4>QuocGia</h4>
+        <h4>NguoiDung</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.ten_quoc_gia)
+                @Html.DisplayNameFor(model => model.ten_nguoi_dung)
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.ten_quoc_gia)
+                @Html.DisplayFor(model => model.ten_nguoi_dung)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tai_khoan)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tai_khoan)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.mat_khau)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.mat_khau)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email)
             </dd>
 
         </dl>
@@ -30,8 +54,7 @@
                 @Html.ActionLink("Back to List", "Index")
             </div>
         }
-</div>*@
-
+    </div>*@
 
 <section>
     <div class="container-md">
@@ -43,20 +66,39 @@
             <div class="card">
                 <div class="card-header bg-info d-flex justify-content-between">
                     <div class="h4 mb-0 mt-1">
-                        Xóa quốc gia
+                        Xóa tài khoản người dùng
                     </div>
 
                 </div>
                 <div class="card-body">
                     <dl class="dl-horizontal">
                         <dt>
-                            Tên quốc gia
+                            Tên người dùng
                         </dt>
-
                         <dd>
-                            @Html.DisplayFor(model => model.ten_quoc_gia)
+                            @Html.DisplayFor(model => model.ten_nguoi_dung)
                         </dd>
 
+                        <dt>
+                           Tên tài khoản người dùng
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.tai_khoan)
+                        </dd>
+
+                        <dt>
+                            Mật khẩu người dùng
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.mat_khau)
+                        </dd>
+
+                        <dt>
+                           Email
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.email)
+                        </dd>
                     </dl>
 
                     @using (Html.BeginForm())

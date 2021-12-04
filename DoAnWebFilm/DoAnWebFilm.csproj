@@ -1836,7 +1836,6 @@
     <Content Include="Areas\Admin\Views\AdminPhim\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDienVien\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDienVien\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminDienVien\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDienVien\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDienVien\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminPhim\Create.cshtml" />
@@ -1963,7 +1962,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\AdminBinhLuan\" />
     <Folder Include="Areas\Admin\Views\AdminDanhGia\" />
-    <Folder Include="Areas\Admin\Views\AdminManager\" />
     <Folder Include="HinhDienVien\" />
     <Folder Include="HinhPhim\" />
   </ItemGroup>
@@ -1977,6 +1975,13 @@
       <LastGenOutput>dbWebFilm.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Areas\Admin\Views\AdminManager\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminNguoiDung\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminNguoiDung\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminNguoiDung\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminManager\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminManager\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminManager\Edit.cshtml" />
     <None Include="Models\dbWebFilm.dbml.layout">
       <DependentUpon>dbWebFilm.dbml</DependentUpon>
     </None>

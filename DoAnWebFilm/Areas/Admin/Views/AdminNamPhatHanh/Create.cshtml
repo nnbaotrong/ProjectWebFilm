@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+@*<h2>Create</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -33,4 +33,46 @@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
+
+<section>
+    <div class="container-md">
+        <div class="my-5 ">
+
+
+            <div class="card">
+                <div class="card-header bg-info d-flex justify-content-between">
+                    <div class="h4 mb-0 mt-1">
+                        Thêm năm phát hành
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="mb-3">
+
+                            <label class="form-label">Năm phát hành</label>
+
+                            @Html.EditorFor(model => model.nam_phat_hanh, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.nam_phat_hanh, "", new { @class = "text-danger" })
+
+                        </div>
+                        <div>
+                            <input type="submit" value="Thêm" class="btn btn-primary" />
+
+                            @Html.ActionLink("Thoát", "Index", null, new { @class = "btn btn-danger" })
+                        </div>
+
+                    }
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
