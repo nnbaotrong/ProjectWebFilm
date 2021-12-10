@@ -135,6 +135,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminDienVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLoaiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminLoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminNamPhatHanhController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminNguoiDungController.cs" />
@@ -1982,6 +1983,11 @@
     <Content Include="Areas\Admin\Views\AdminManager\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminManager\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AdminManager\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLogin\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhim\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhim\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhim\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhim\Search.cshtml" />
     <None Include="Models\dbWebFilm.dbml.layout">
       <DependentUpon>dbWebFilm.dbml</DependentUpon>
     </None>

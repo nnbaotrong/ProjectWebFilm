@@ -12,6 +12,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         dbWebFilmDataContext db = new dbWebFilmDataContext();
         public ActionResult Index()
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View(db.QuocGias.ToList());
         }
 
@@ -19,6 +23,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View();
         }
 
@@ -34,6 +42,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             QuocGia quocGia = db.QuocGias.SingleOrDefault(n => n.id_quoc_gia == id);
             ViewBag.id_quoc_gia = quocGia.id_quoc_gia;
             if (quocGia == null)
@@ -64,6 +76,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             //Get object by id
             QuocGia quocGia = db.QuocGias.SingleOrDefault(n => n.id_quoc_gia == id);
             ViewBag.id_quoc_gia = quocGia.id_quoc_gia;

@@ -11,6 +11,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         // GET: Admin/AdminHome
         public ActionResult Index()
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View();
         }
     }

@@ -3,10 +3,9 @@
 @using PagedList.Mvc;
 @model PagedList.PagedList<DoAnWebFilm.Models.Phim>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
 
 
 
@@ -20,6 +19,8 @@
             <div class="my-3 d-flex justify-content-end">
 
                 <div class="">
+               
+
                     <!-- Đoạn cần thêm -->
                     @using (Html.BeginForm("Search", "AdminPhim", FormMethod.Get, new { @class = "d-flex" })) // -- phần thay đổi
                     {
@@ -122,7 +123,7 @@
                 </div>
             </div>
             <div class="text-center"
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
             </div>
 
         </div>

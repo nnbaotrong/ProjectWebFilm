@@ -12,6 +12,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         dbWebFilmDataContext db = new dbWebFilmDataContext();
         public ActionResult Index()
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View(db.NamPhatHanhs.ToList());
         }
 
@@ -19,6 +23,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View();
         }
 
@@ -34,6 +42,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             NamPhatHanh namPhatHanh = db.NamPhatHanhs.SingleOrDefault(n => n.id_nam == id);
 
             ViewBag.id_nam = namPhatHanh.id_nam;
@@ -65,6 +77,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             //Get object by id
             NamPhatHanh namPhatHanh = db.NamPhatHanhs.SingleOrDefault(n => n.id_nam == id);
             ViewBag.id_loai = namPhatHanh.id_nam;

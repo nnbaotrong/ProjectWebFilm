@@ -188,6 +188,7 @@ delete NguoiDung
 DBCC CHECKIDENT (NguoiDung, RESEED, 0)
 DBCC CHECKIDENT (NguoiDung)
 insert into NguoiDung values (N'Nguyễn Ngọc Bảo Trọng',N'nnbaotrong',N'123','nnbaotrong@gmail.com')
+insert into NguoiDung values (N'Phạm Việt An',N'viet123',N'123','viet123g@gmail.com')
 
 
 delete AdminPro
@@ -338,6 +339,12 @@ insert into Phim_Dienvien values (24,5)
 insert into Phim_Dienvien values (25,4)
 insert into Phim_Dienvien values (25,5)
 
+delete BinhLuan
+DBCC CHECKIDENT (BinhLuan, RESEED, 0)
+DBCC CHECKIDENT (BinhLuan)
+insert into BinhLuan values (1,1,N'Phim quá hay','08/21/2021')
+insert into BinhLuan values (2,1,N'Khi nào mới ra phim mới','08/21/2021')
+
 select p.id_phim, p.ten_phim, l.ten_loai 
 from Phim p INNER JOIN ChiTietLoai ctl 
 	on p.id_phim = ctl.id_phim INNER JOIN Loai l
@@ -350,6 +357,10 @@ from Phim p INNER JOIN ChiTietLoai ctl
 
 select * from Phim
 where ten_phim like '%Thor%'
+
+select p.ten_phim, nd.ten_nguoi_dung, nd.tai_khoan, bl.noi_dung,bl.ngay_binh_luan 
+from Phim p INNER JOIN BinhLuan bl on p.id_phim= bl.id_phim INNER JOIN NguoiDung nd on bl.id_nguoi_dung = nd.id_nguoi_dung
+
 
 
 select * from AdminPro

@@ -1,0 +1,83 @@
+﻿@model DoAnWebFilm.Models.Phim
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Phim</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ten_phim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ten_phim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.anh_bia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anh_bia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.link_phim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.link_phim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mo_ta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mo_ta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trailer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trailer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_trang_thai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_trang_thai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_quoc_gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_quoc_gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_nam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_nam)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_phim }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

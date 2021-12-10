@@ -12,6 +12,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         dbWebFilmDataContext db = new dbWebFilmDataContext();
         public ActionResult Index()
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View(db.AdminPros.ToList());
         }
 
@@ -34,6 +38,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View();
         }
 
@@ -49,6 +57,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             AdminPro adminPro = db.AdminPros.SingleOrDefault(n => n.id == id);
             ViewBag.id = adminPro.id;
             if (adminPro == null)
@@ -79,6 +91,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             //Get object by id
             AdminPro adminPro = db.AdminPros.SingleOrDefault(n => n.id == id);
             ViewBag.id = adminPro.id;

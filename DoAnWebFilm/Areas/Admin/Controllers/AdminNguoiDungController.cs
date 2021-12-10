@@ -12,6 +12,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         dbWebFilmDataContext db = new dbWebFilmDataContext();
         public ActionResult Index()
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View(db.NguoiDungs.ToList());
         }
 
@@ -19,6 +23,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View();
         }
 
@@ -34,6 +42,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(n => n.id_nguoi_dung == id);
 
             ViewBag.id_nguoi_dung = nguoiDung.id_nguoi_dung;
@@ -65,6 +77,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             //Get object by id
             NguoiDung nguoiDung = db.NguoiDungs.SingleOrDefault(n => n.id_nguoi_dung == id);
             ViewBag.id_nguoi_dung = nguoiDung.id_nguoi_dung;

@@ -1,0 +1,82 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login Admin</title>
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/fontawesome-free-5.15.4-web/css/all.css">
+
+    <script src="~/Scripts/js/bootstrap.js"></script>
+
+</head>
+<body>
+
+
+    <section>
+        <div class="container">
+            <h4 style="color:red; text-align:center">@ViewBag.Thongbao</h4>
+        </div>
+        <div class="container-md">
+            <div class="my-5 d-flex justify-content-center ">
+
+
+                <div class="my-5 card w-50">
+                    <div class="card-header bg-info d-flex justify-content-between">
+                        <div class="h4 mb-0 mt-1">
+                            Đăng nhập admin
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="align-self-center">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.ValidationSummary(true)
+
+                                @Html.TextBox("TenDN", "", new { @class = "form-control", @placeholder = "Tên đăng nhập" })
+                                <p style="color:red">@ViewData["Loi1"]</p>
+
+
+                                @Html.TextBox("MatKhau", "", new { @class = "form-control", @placeholder = "Mật khẩu" })
+                                <p style="color:red">@ViewData["Loi2"]</p>
+
+                                <div id="remember" class="checkbox" style="margin: 0.5rem 0">
+                                    <label>
+                                        <input type="checkbox" value="remember-me"> Nhớ mật khẩu
+                                    </label>
+                                </div>
+                                <input class="btn btn-primary" type="submit" value="Đăng Nhập" />
+
+                            }
+                            <br />
+                            <a href="#" class="forgot-password">
+                                Quên mật khẩu?
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <br />
+    <br />   <br />   <br />   <br />   <br />   <br />   <br />   <br />   <br />   <br />   <br />   <br />   <br />   <br />   <br />
+
+
+    <!--Footer-->
+    <footer class="py-3 bg-black text-white-50">
+        <div class="container">
+            <p class="mb-0">Copyright © 2018 - All Rights Reserved - Domain Name</p>
+        </div>
+    </footer>
+</body>
+</html>

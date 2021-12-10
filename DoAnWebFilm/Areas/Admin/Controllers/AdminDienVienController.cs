@@ -13,6 +13,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         dbWebFilmDataContext db = new dbWebFilmDataContext();
         public ActionResult Index()
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View(db.DienViens.ToList());
         }
 
@@ -20,6 +24,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View();
         }
 
@@ -78,6 +86,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             //Lay ra doi tuong sach can xoa theo ma
             DienVien dienvien = db.DienViens.SingleOrDefault(n => n.id_dien_vien == id);
             ViewBag.id_dien_vien = dienvien.id_dien_vien;
@@ -109,6 +121,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             //Lay ra doi tuong sach theo ma
             DienVien dienvien = db.DienViens.SingleOrDefault(n => n.id_dien_vien == id);
             ViewBag.id_dien_vien = dienvien.id_dien_vien;

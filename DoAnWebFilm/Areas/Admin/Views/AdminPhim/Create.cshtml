@@ -19,7 +19,7 @@
                 </div>
                 <div class="card-body">
 
-                    @using (Html.BeginForm())
+                    @using (Html.BeginForm("Create", "AdminPhim", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
 
@@ -32,9 +32,9 @@
                             </div>
 
                             <div class="mb-2">
-                                <label class="form-label fw-bold">Ảnh Bìa Phim</label>                       
-                                    @Html.EditorFor(model => model.anh_bia, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.anh_bia, "", new { @class = "text-danger" })                       
+                                <label class="form-label fw-bold">Ảnh Bìa Phim</label>
+                                <input type="file" name="fileUpload" class="form-control" />
+                                @Html.ValidationMessageFor(model => model.anh_bia, "", new { @class = "text-danger" })
                             </div>
 
                             <div class="mb-2">
