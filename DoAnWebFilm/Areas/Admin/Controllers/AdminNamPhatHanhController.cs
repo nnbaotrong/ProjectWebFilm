@@ -33,9 +33,18 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(NamPhatHanh namPhatHanh)
         {
-            db.NamPhatHanhs.InsertOnSubmit(namPhatHanh);
-            db.SubmitChanges();
-            return RedirectToAction("Index");
+            if (namPhatHanh.nam_phat_hanh == null)
+            {
+                ViewData["Loi"] = "Mời nhập năm";
+            }
+            else
+            {
+                db.NamPhatHanhs.InsertOnSubmit(namPhatHanh);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+
         }
 
         //Delete NamPhatHanh
@@ -96,12 +105,23 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(NamPhatHanh namPhatHanh)
         {
-            NamPhatHanh namPhatHanh2 = db.NamPhatHanhs.Single(n => n.id_nam == namPhatHanh.id_nam);
 
-            namPhatHanh2.nam_phat_hanh = namPhatHanh.nam_phat_hanh;
-            db.SubmitChanges();
 
-            return RedirectToAction("Index");
+            if (namPhatHanh.nam_phat_hanh == null)
+            {
+                ViewData["Loi"] = "Mời nhập năm";
+            }
+            else
+            {
+                NamPhatHanh namPhatHanh2 = db.NamPhatHanhs.Single(n => n.id_nam == namPhatHanh.id_nam);
+
+                namPhatHanh2.nam_phat_hanh = namPhatHanh.nam_phat_hanh;
+                db.SubmitChanges();
+
+                return RedirectToAction("Index");
+            }
+            return View();
+            
 
         }
     }

@@ -45,24 +45,38 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var fileName = Path.GetFileName(fileUpload.FileName);
-                    DateTime localDate = DateTime.Now;
-                    string date_str = localDate.ToString("ddMMyyyy_HHmmss");
-                    fileName = date_str + "_" + fileName;
-                    var path = Path.Combine(Server.MapPath("~/HinhDienVien"), fileName);
 
-                    if (System.IO.File.Exists(path))
-                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                    if (dienvien.ten_dien_vien == null )
+                    {
+                        ViewData["Loi"] = "Mời nhập tên diễn viên";
+                    }
                     else
                     {
-                        fileUpload.SaveAs(path);
-                    }
-                    dienvien.anh_bia = fileName;
+                        var fileName = Path.GetFileName(fileUpload.FileName);
+                        DateTime localDate = DateTime.Now;
+                        string date_str = localDate.ToString("ddMMyyyy_HHmmss");
+                        fileName = date_str + "_" + fileName;
+                        var path = Path.Combine(Server.MapPath("~/HinhDienVien"), fileName);
 
-                    db.DienViens.InsertOnSubmit(dienvien);
-                    db.SubmitChanges();
+                        if (System.IO.File.Exists(path))
+                            ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                        else
+                        {
+                            fileUpload.SaveAs(path);
+                        }
+                        dienvien.anh_bia = fileName;
+
+                        db.DienViens.InsertOnSubmit(dienvien);
+                        db.SubmitChanges();
+                        return RedirectToAction("Index");
+                    }
+                  
+
+
+
                 }
-                return RedirectToAction("Index");
+
+                return View();
 
             }
         }
@@ -163,13 +177,20 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
                 dienvien.anh_bia = fileName;
                 dienvien2.anh_bia = dienvien.anh_bia;
             }
-            //Luu vao CSDL 
-            dienvien2.ten_dien_vien = dienvien.ten_dien_vien;
-         
-            db.SubmitChanges();
 
-            return RedirectToAction("Index");
+            if (dienvien.ten_dien_vien == null)
+            {
+                ViewData["Loi"] = "Mời nhập tên diễn viên";
+            }
+            else
+            {
+                //Luu vao CSDL 
+                dienvien2.ten_dien_vien = dienvien.ten_dien_vien;
 
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
 

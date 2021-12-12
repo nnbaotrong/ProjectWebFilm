@@ -1,4 +1,5 @@
 ﻿@model DoAnWebFilm.Models.Phim
+@using DoAnWebFilm.Models;
 
 @{
     ViewBag.Title = "Details";
@@ -116,57 +117,10 @@
                 <div>
                     <div class="my-3 p-3 bg-dark text-white shadow-sm">
                         <h5 class="border-bottom pb-2 mb-0">Bình Luận</h5>
-                        <div class="d-flex text-muted pt-3">
-                            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
-                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
-                                 preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#007bff" />
-                                <text x="50%" y="50%"
-                                      fill="#007bff" dy=".3em">32x32</text>
-                            </svg>
-
-                            <p class="pb-3 mb-0 small lh-sm ">
-                                <strong class="d-block text-gray-dark">nguyenngoctuan</strong>
-                                Phim hay thế nhờ
-                            </p>
-                        </div>
-                        <div class="d-flex text-muted pt-3">
-                            <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
-                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
-                                 preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#e83e8c" />
-                                <text x="50%" y="50%"
-                                      fill="#e83e8c" dy=".3em">32x32</text>
-                            </svg>
-
-                            <p class="pb-3 mb-0 small lh-sm ">
-                                <strong class="d-block text-gray-dark">nguyenphanhoairin</strong>
-                                Nó ở cái tầm
-                            </p>
-                        </div>
-                     
-                        <div class=" text-muted pt-3">
-                            <div class="d-flex">
-                                <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
-                                     xmlns="http://www.w3.org/2000/svg" role="img">
-                                    <rect width="100%" height="100%" fill="#6f42c1" />
-                                </svg>
-
-                                <p class="pb-3 mb-0 small lh-sm ">
-                                    <strong class="d-block ">nguyenngocbaotrong</strong>
-                                </p>
-                            </div>
-
-
-                            <div class="mt-1 ">
-                                <textarea class="form-control" placeholder="Thêm Bình Luận" rows="2"></textarea>
-                            </div>
-                            <div class="text-end mt-2 ">
-                                <button type="button" class="btn bg-primary">Đăng</button>
-                            </div>
-                        </div>
+                  
+                        @Html.Action("ShowComment", "Home", new { id = @Model.id_phim })
+            
+                        
 
                     </div>
                 </div>
@@ -176,7 +130,7 @@
                 </div>
 
                 <div class="row row-cols-2 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 gy-3 gx-2 g-gl-0 pb-3 ">
-                  
+
                     @Html.Action("MovieMore", "Home")
 
 

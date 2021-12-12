@@ -33,9 +33,18 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(TrangThai trangThai)
         {
-            db.TrangThais.InsertOnSubmit(trangThai);
-            db.SubmitChanges();
-            return RedirectToAction("Index");
+            if (trangThai.ten_trang_thai == null)
+            {
+                ViewData["Loi"] = "Mời nhập trang thái";
+            }
+            else
+            {
+                db.TrangThais.InsertOnSubmit(trangThai);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+   
         }
 
         //Delete TrangThai
@@ -97,12 +106,20 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(TrangThai trangThai)
         {
-            TrangThai trangThai2 = db.TrangThais.Single(n => n.id_trang_thai == trangThai.id_trang_thai);
 
-            trangThai2.ten_trang_thai = trangThai.ten_trang_thai;
-            db.SubmitChanges();
+            if (trangThai.ten_trang_thai == null)
+            {
+                ViewData["Loi"] = "Mời nhập trang thái";
+            }
+            else
+            {
+                TrangThai trangThai2 = db.TrangThais.Single(n => n.id_trang_thai == trangThai.id_trang_thai);
 
-            return RedirectToAction("Index");
+                trangThai2.ten_trang_thai = trangThai.ten_trang_thai;
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
 
         }
     }

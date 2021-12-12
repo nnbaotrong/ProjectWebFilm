@@ -126,6 +126,25 @@ namespace DoAnWebFilm.Controllers
             return PartialView(movieMore);
         }
 
+        //Cmt
+        public ActionResult ShowComment(int id)
+        {
+            var cmt = from bl in db.BinhLuans where bl.id_phim == id select bl;
+            return PartialView(cmt);
+        }
+
+
+        [HttpPost]
+        public ActionResult CreateComment(BinhLuan binhLuan)
+        {
+            DateTime localDate = DateTime.Now;
+            var id = binhLuan.id_phim;
+            binhLuan.ngay_binh_luan = localDate;
+            db.BinhLuans.InsertOnSubmit(binhLuan);
+            db.SubmitChanges();
+            return RedirectToAction("WatchMovie/"+id);
+        }
+
 
     }
 }

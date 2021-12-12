@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using DoAnWebFilm.Models;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -90,7 +91,30 @@
                         <!-- Kết thúc -->
 
                     </div>
-                    <a href="/NguoiDung/Dangnhap" class="navbar-toggler bg-dark d-none d-lg-block "> <i class="fas fa-sign-in-alt "></i></a>
+
+                    @{
+                        string ten;
+                        if (Session["TaiKhoan"] == null)
+                        {
+                            ten = "";
+
+
+                            <a href="/NguoiDung/Dangnhap" class="navbar-toggler bg-dark d-none d-lg-block "> <i class="fas fa-sign-in-alt "></i></a>
+
+
+                        }
+                        else
+                        {
+                            NguoiDung nd = (NguoiDung)Session["TaiKhoan"];
+                            ten = nd.ten_nguoi_dung;
+
+                           <a class="text-white"  href="#"><i class="fa fa-user-o"></i> Chào: @ten</a>
+
+                        }
+
+                    }
+
+                  
 
                 </div>
             </nav>
@@ -116,7 +140,7 @@
 
                     <ul class="list-inline mt-5">
                         <li class="list-inline-item">
-                            <a href="#" class="p-2 rounded bg-black link-light"><i class="fab fa-fw fa-facebook-square"></i></a>
+                            <a href="https://www.facebook.com/nnbaotrong/" class="p-2 rounded bg-black link-light"><i class="fab fa-fw fa-facebook-square"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a href="#" class="p-2 rounded bg-black link-light"><i class="fab fa-fw fa-google-plus-g"></i></a>

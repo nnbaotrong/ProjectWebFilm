@@ -33,9 +33,33 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(NguoiDung nguoiDung)
         {
-            db.NguoiDungs.InsertOnSubmit(nguoiDung);
-            db.SubmitChanges();
-            return RedirectToAction("Index");
+
+
+            if (nguoiDung.ten_nguoi_dung == null)
+            {
+                ViewData["Loi1"] = "Mời nhập tên người dùng";
+            }
+            else if (nguoiDung.tai_khoan == null)
+            {
+                ViewData["Loi2"] = "Mời nhập tên tài khoản";
+            }
+            else if (nguoiDung.mat_khau == null)
+            {
+                ViewData["Loi3"] = "Mời nhập mật khẩu";
+            }
+            else if (nguoiDung.email == null)
+            {
+                ViewData["Loi4"] = "Mời nhập email";
+            }
+            else
+            {
+                db.NguoiDungs.InsertOnSubmit(nguoiDung);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+
+           
         }
 
         //Delete NguoiDung
@@ -96,15 +120,42 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(NguoiDung nguoiDung)
         {
-            NguoiDung nguoiDung2 = db.NguoiDungs.Single(n => n.id_nguoi_dung == nguoiDung.id_nguoi_dung);
 
-            nguoiDung2.ten_nguoi_dung = nguoiDung.ten_nguoi_dung;
-            nguoiDung2.tai_khoan = nguoiDung.tai_khoan;
-            nguoiDung2.mat_khau = nguoiDung.mat_khau;
-            nguoiDung2.email = nguoiDung.email;
-            db.SubmitChanges();
 
-            return RedirectToAction("Index");
+
+            if (nguoiDung.ten_nguoi_dung == null)
+            {
+                ViewData["Loi1"] = "Mời nhập tên người dùng";
+            }
+            else if (nguoiDung.tai_khoan == null)
+            {
+                ViewData["Loi2"] = "Mời nhập tên tài khoản";
+            }
+            else if (nguoiDung.mat_khau == null)
+            {
+                ViewData["Loi3"] = "Mời nhập mật khẩu";
+            }
+            else if (nguoiDung.email == null)
+            {
+                ViewData["Loi4"] = "Mời nhập email";
+            }
+            else
+            {
+                NguoiDung nguoiDung2 = db.NguoiDungs.Single(n => n.id_nguoi_dung == nguoiDung.id_nguoi_dung);
+
+                nguoiDung2.ten_nguoi_dung = nguoiDung.ten_nguoi_dung;
+                nguoiDung2.tai_khoan = nguoiDung.tai_khoan;
+                nguoiDung2.mat_khau = nguoiDung.mat_khau;
+                nguoiDung2.email = nguoiDung.email;
+                db.SubmitChanges();
+
+                return RedirectToAction("Index");
+            }
+            return View();
+
+
+
+            
 
         }
     }

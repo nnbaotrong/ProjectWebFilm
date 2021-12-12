@@ -33,9 +33,20 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(QuocGia quocGia)
         {
-            db.QuocGias.InsertOnSubmit(quocGia);
-            db.SubmitChanges();
-            return RedirectToAction("Index");
+
+            if (quocGia.ten_quoc_gia == null)
+            {
+                ViewData["Loi"] = "Mời nhập tên quốc gia";
+            }
+            else
+            {
+                db.QuocGias.InsertOnSubmit(quocGia);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+
+            
         }
 
         //Delete QuocGias
@@ -95,12 +106,20 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(QuocGia quocGia)
         {
-            QuocGia quocGia2 = db.QuocGias.Single(n => n.id_quoc_gia == quocGia.id_quoc_gia);
 
-            quocGia2.ten_quoc_gia = quocGia.ten_quoc_gia;
-            db.SubmitChanges();
+            if (quocGia.ten_quoc_gia == null)
+            {
+                ViewData["Loi"] = "Mời nhập tên quốc gia";
+            }
+            else
+            {
+                QuocGia quocGia2 = db.QuocGias.Single(n => n.id_quoc_gia == quocGia.id_quoc_gia);
+                quocGia2.ten_quoc_gia = quocGia.ten_quoc_gia;
+                db.SubmitChanges();
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            return View();
 
         }
     }

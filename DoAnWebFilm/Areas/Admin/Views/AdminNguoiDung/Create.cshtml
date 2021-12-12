@@ -81,24 +81,24 @@
 
                         <label class="form-label">Tên người dùng</label>
 
-                        @Html.EditorFor(model => model.ten_nguoi_dung, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ten_nguoi_dung, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ten_nguoi_dung, new { htmlAttributes = new { @class = "form-control", @minlength = 2, @maxlength = 50 } })
+                        <p class="text-danger">@ViewData["Loi1"]</p>
 
                         <label class="form-label">Tài khoản người dùng</label>
 
-                        @Html.EditorFor(model => model.tai_khoan, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.tai_khoan, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.tai_khoan, new { htmlAttributes = new { @class = "form-control", @minlength = 2, @maxlength = 50 } })
+                        <p class="text-danger">@ViewData["Loi2"]</p>
 
 
                         <label class="form-label">Mật khẩu người dùng</label>
 
-                        @Html.EditorFor(model => model.mat_khau, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.mat_khau, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.mat_khau, new { htmlAttributes = new { @class = "form-control", @minlength = 2, @maxlength = 50 } })
+                        <p class="text-danger">@ViewData["Loi3"]</p>
 
                         <label class="form-label">Email</label>
 
-                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @minlength = 2, @maxlength = 50 } })
+                        <p class="text-danger">@ViewData["Loi4"]</p>
 
                     </div>
                         <div>

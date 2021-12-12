@@ -1988,6 +1988,7 @@
     <Content Include="Areas\Admin\Views\AdminPhim\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\AdminPhim\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminPhim\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminPhim\ShowComment.cshtml" />
     <None Include="Models\dbWebFilm.dbml.layout">
       <DependentUpon>dbWebFilm.dbml</DependentUpon>
     </None>
@@ -1996,6 +1997,8 @@
     <Content Include="Views\Home\TopMovie.cshtml" />
     <Content Include="Views\Home\Banner.cshtml" />
     <Content Include="Views\Home\MovieMore.cshtml" />
+    <Content Include="Views\Home\ShowComment.cshtml" />
+    <Content Include="Views\Home\CreateComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

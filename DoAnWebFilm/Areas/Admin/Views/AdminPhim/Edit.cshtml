@@ -5,90 +5,104 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Phim</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.id_phim)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ten_phim, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ten_phim, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ten_phim, "", new { @class = "text-danger" })
+
+<section>
+    <div class="container-md">
+        <div class="my-5 ">
+
+
+            <div class="card">
+                <div class="card-header bg-info d-flex justify-content-between">
+                    <div class="h4 mb-0 mt-1">
+                        Sửa Phim
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm("Edit", "AdminPhim", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.id_phim)
+
+                        <div class="mb-3">
+                            <label class="form-label">Tên phim</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ten_phim, new { htmlAttributes = new { @class = "form-control", @minlength = 2, @maxlength = 50 } })
+                                @Html.ValidationMessageFor(model => model.ten_phim, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ảnh bìa</label>
+                            <div class="col-md-10">
+                                <input type="file" name="fileUpload" class="form-control" />
+                                <img src="@Url.Content("~/HinhPhim/"+ Model.anh_bia)" width="120" /> (Ảnh hiện tại)
+                                @*thong bao trung*@
+                                @ViewBag.Thongbao
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Link Phim</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.link_phim, new { htmlAttributes = new { @class = "form-control", @minlength = 0, @maxlength = 100 } })
+                                @Html.ValidationMessageFor(model => model.link_phim, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Mô tả</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.mo_ta, new { htmlAttributes = new { @class = "form-control", @minlength = 0, @maxlength = 200 } })
+                                @Html.ValidationMessageFor(model => model.mo_ta, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Trailer</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.trailer, new { htmlAttributes = new { @class = "form-control", @minlength = 0, @maxlength = 100 } })
+                                @Html.ValidationMessageFor(model => model.trailer, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Trạng thái</label>
+                            <div class="col-md-10">
+                                @Html.DropDownList("id_trang_thai", null, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Quốc gia</label>
+                            <div class="col-md-10">
+                                @Html.DropDownList("id_quoc_gia", null, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Năm</label>
+                            <div class="col-md-10">
+                                @Html.DropDownList("id_nam", null, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+
+                                                        <div class="col-md-offset-2 col-md-10">
+                                                            <input type="submit" value="Save" class="btn btn-primary" />
+                                                        </div>
+                                                    </div>
+                                                    }
+
+
+                                                </div>
             </div>
+
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.anh_bia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.anh_bia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.anh_bia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.link_phim, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.link_phim, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.link_phim, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.mo_ta, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.mo_ta, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.mo_ta, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.trailer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.trailer, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.trailer, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.id_trang_thai, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.id_trang_thai, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.id_trang_thai, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.id_quoc_gia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.id_quoc_gia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.id_quoc_gia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.id_nam, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.id_nam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.id_nam, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+</section>

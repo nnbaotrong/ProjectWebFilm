@@ -33,9 +33,18 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Loai loai)
         {
-            db.Loais.InsertOnSubmit(loai);
-            db.SubmitChanges();
-            return RedirectToAction("Index");
+            if (loai.ten_loai == null)
+            {
+                ViewData["Loi"] = "Mời nhập tên loại";
+            }
+            else
+            {
+                db.Loais.InsertOnSubmit(loai);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+
         }
 
         //Delete Loai
@@ -96,12 +105,22 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(Loai loai)
         {
-            Loai loai2 = db.Loais.Single(n => n.id_loai == loai.id_loai);
 
-            loai2.ten_loai = loai.ten_loai;
-            db.SubmitChanges();
 
-            return RedirectToAction("Index");
+
+            if (loai.ten_loai == null)
+            {
+                ViewData["Loi"] = "Mời nhập tên loại";
+            }
+            else
+            {
+                Loai loai2 = db.Loais.Single(n => n.id_loai == loai.id_loai);
+                loai2.ten_loai = loai.ten_loai;
+                db.SubmitChanges();
+
+                return RedirectToAction("Index");
+            }
+            return View();
 
         }
     }

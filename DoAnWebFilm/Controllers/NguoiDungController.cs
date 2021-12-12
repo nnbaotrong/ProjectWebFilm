@@ -106,6 +106,7 @@ namespace DoAnWebFilm.Controllers
                 {
                     ViewBag.Thongbao = "Chúc mừng bạn đăng nhập thành công";
                     Session["Taikhoan"] = nd;
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                     ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng";

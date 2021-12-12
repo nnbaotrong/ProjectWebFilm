@@ -48,9 +48,24 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(AdminPro adminPro)
         {
-            db.AdminPros.InsertOnSubmit(adminPro);
-            db.SubmitChanges();
-            return RedirectToAction("Index");
+
+            if (adminPro.ten_admin == null)
+            {
+                ViewData["Loi1"] = "Mời nhập tên admin";
+            }
+            else if (adminPro.mat_khau_admin == null)
+            {
+                ViewData["Loi2"] = "Mời nhập mật khẩu admin";
+            }
+            else
+            {
+                db.AdminPros.InsertOnSubmit(adminPro);
+                db.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+
+         
         }
 
         //Delete Admin
@@ -110,13 +125,28 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(AdminPro adminPro)
         {
-            AdminPro adminPro2 = db.AdminPros.Single(n => n.id == adminPro.id);
 
-            adminPro2.ten_admin = adminPro.ten_admin;
-            adminPro2.mat_khau_admin = adminPro.mat_khau_admin;
-            db.SubmitChanges();
+            if (adminPro.ten_admin == null)
+            {
+                ViewData["Loi1"] = "Mời nhập tên admin";
+            }
+            else if (adminPro.mat_khau_admin == null)
+            {
+                ViewData["Loi2"] = "Mời nhập mật khẩu admin";
+            }
+            else
+            {
+                AdminPro adminPro2 = db.AdminPros.Single(n => n.id == adminPro.id);
 
-            return RedirectToAction("Index");
+                adminPro2.ten_admin = adminPro.ten_admin;
+                adminPro2.mat_khau_admin = adminPro.mat_khau_admin;
+                db.SubmitChanges();
+
+                return RedirectToAction("Index");
+            }
+            return View();
+
+      
 
         }
     }

@@ -114,6 +114,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
 
         public ActionResult Details(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             //Lay ra doi tuong theo ma
             Phim phim = db.Phims.SingleOrDefault(n => n.id_phim == id);
             ViewBag.id_phim = phim.id_phim;
@@ -128,6 +132,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             //Lay ra doi tuong  can xoa theo ma
             Phim phim = db.Phims.SingleOrDefault(n => n.id_phim == id);
             ViewBag.id_phim = phim.id_phim;
@@ -159,6 +167,10 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             //Lay ra doi tuong theo ma
             Phim phim = db.Phims.SingleOrDefault(n => n.id_phim == id);
             ViewBag.id_phim = phim.id_phim;
@@ -225,6 +237,32 @@ namespace DoAnWebFilm.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
 
+        }
+
+        //Cmt
+        public ActionResult ShowComment(int id)
+        {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
+            var cmt = from bl in db.BinhLuans where bl.id_phim == id select bl;
+            return PartialView(cmt);
+        }
+        [HttpPost]
+        public ActionResult DeleteComment(int id)
+        {
+            //Lay ra doi tuong  can xoa theo ma
+            Phim phim = db.Phims.SingleOrDefault(n => n.id_phim == id);
+            ViewBag.id_phim = phim.id_phim;
+            if (phim == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            //db.Phims.DeleteOnSubmit(phim);
+            //db.SubmitChanges();
+            return RedirectToAction("Index");
         }
 
 

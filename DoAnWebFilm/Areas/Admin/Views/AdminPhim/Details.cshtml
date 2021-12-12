@@ -1,83 +1,91 @@
 ﻿@model DoAnWebFilm.Models.Phim
-
+@using DoAnWebFilm.Models;
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Phim</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ten_phim)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ten_phim)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.anh_bia)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.anh_bia)
-        </dd>
+<div class="container ">
+    <div class="bg-dark my-2 p-3 text-white">    <h2>Details</h2></div>
+    <div class="row gx-1">
+        <div class="col-sm-12 col-md-4 ">
+            <div class="card border-0  ">
+                <img src="@Url.Content("~/HinhPhim/"+ @Html.DisplayFor(model => model.anh_bia))" class="card-img-top" alt="...">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.link_phim)
-        </dt>
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.link_phim)
-        </dd>
+        <div class="col-sm-12 col-md-8 bg-dark">
+            <div class="text-white p-3 py-4 ">
+                <div class="border-bottom">
+                    <h3>      @Html.DisplayFor(model => model.ten_phim)</h3>
+                </div>
+                <div class="mt-3">
+                    <p>Trạng Thái: <span class="btn btn-primary text-white">@Model.TrangThai.ten_trang_thai</span></p>
+                    <p>Quốc Gia: <span class="btn btn-primary text-white">@Model.QuocGia.ten_quoc_gia</span> </p>
+                    <p>Năm Sản Xuất:  <span class="btn btn-primary text-white">@Model.NamPhatHanh.nam_phat_hanh</span> </p>
+                    <p>
+                        Thể Loại:
+                        @foreach (var filmType in Model.ChiTietLoais)
+                        {
+                            <span class="btn btn-primary text-white">@filmType.Loai.ten_loai </span>
+                        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.mo_ta)
-        </dt>
+                    </p>
+                    <p>
+                        Thể Loại:
+                        @foreach (var filmType in Model.Phim_Dienviens)
+                        {
+                            <span class="btn btn-primary text-white">@filmType.DienVien.ten_dien_vien </span>
+                        }
 
-        <dd>
-            @Html.DisplayFor(model => model.mo_ta)
-        </dd>
+                    </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.trailer)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.trailer)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.id_trang_thai)
-        </dt>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.id_trang_thai)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.id_quoc_gia)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.id_quoc_gia)
-        </dd>
+        </div>
+        <div class="bg-dark my-2 p-3 py-5 text-white">
+            <h4>Nội dung</h4>
+            <p>
+                @Model.mo_ta
+            </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.id_nam)
-        </dt>
+        </div>
+        <div class="bg-dark my-2">
+            <h3 class="text-white">Phim</h3>
+            <div class=" ratio ratio-16x9">
 
-        <dd>
-            @Html.DisplayFor(model => model.id_nam)
-        </dd>
+                <iframe src="@Model.link_phim" title="YouTube video player"
+                        frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
 
-    </dl>
+        <div class="bg-dark my-2">
+            <h3 class="text-white">Trailer</h3>
+            <div class=" ratio ratio-16x9">
+
+                <iframe src="@Model.link_phim" title="YouTube video player"
+                        frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div>
+            <div class="my-3 p-3 bg-dark text-white shadow-sm">
+                <h5 class="border-bottom pb-2 mb-0">Bình Luận</h5>
+
+                @Html.Action("ShowComment", "AdminPhim", new { id = @Model.id_phim })
+
+
+
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_phim }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
