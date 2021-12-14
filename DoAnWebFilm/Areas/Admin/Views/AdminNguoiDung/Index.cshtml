@@ -1,5 +1,8 @@
-﻿@model IEnumerable<DoAnWebFilm.Models.NguoiDung>
+﻿
 
+@using DoAnWebFilm.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<DoAnWebFilm.Models.NguoiDung>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -57,10 +60,13 @@
             <div class="my-3 d-flex justify-content-end">
 
                 <div class="">
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-info" type="submit">Search</button>
-                    </form>
+                    <!-- Đoạn cần thêm -->
+                    @using (Html.BeginForm("Search", "AdminNguoiDung", FormMethod.Get, new { @class = "d-flex" })) // -- phần thay đổi
+                    {
+                        @Html.TextBox("searchND", "", new { @class = "form-control", @placeholder = "Tìm kiếm phim" })
+                        <input type="submit" class="btn btn-primary" value="Tìm kiếm" />
+                    }
+                    <!-- Kết thúc -->
                 </div>
 
             </div>
@@ -89,30 +95,30 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr class="text-center">
+                                <tr class="text-center">
 
-                                <th scope="col">   @Html.DisplayFor(modelItem => item.id_nguoi_dung)</th>
-                                <td scope="col">
-                                    @Html.DisplayFor(modelItem => item.ten_nguoi_dung)
-                                </td>
-                                <td scope="col">
-                                    @Html.DisplayFor(modelItem => item.tai_khoan)
-                                </td>
-                                <td scope="col">
-                                    @Html.DisplayFor(modelItem => item.email)
-                                </td>
+                                    <th scope="col">   @Html.DisplayFor(modelItem => item.id_nguoi_dung)</th>
+                                    <td scope="col">
+                                        @Html.DisplayFor(modelItem => item.ten_nguoi_dung)
+                                    </td>
+                                    <td scope="col">
+                                        @Html.DisplayFor(modelItem => item.tai_khoan)
+                                    </td>
+                                    <td scope="col">
+                                        @Html.DisplayFor(modelItem => item.email)
+                                    </td>
 
-                                <td scope="col">
-                                    <a href="@Url.Action("Edit", "AdminNguoiDung", new { id = item.id_nguoi_dung })" class="btn btn-warning mx-1">
-                                        <i class="fas fa-pen text-white"></i>
-                                    </a>
+                                    <td scope="col">
+                                        <a href="@Url.Action("Edit", "AdminNguoiDung", new { id = item.id_nguoi_dung })" class="btn btn-warning mx-1">
+                                            <i class="fas fa-pen text-white"></i>
+                                        </a>
 
-                                    <a href="@Url.Action("Delete", "AdminNguoiDung", new { id = item.id_nguoi_dung })" class="btn btn-danger mx-1">
-                                        <i class="fas fa-trash-alt text-white"></i>
-                                    </a>
+                                        <a href="@Url.Action("Delete", "AdminNguoiDung", new { id = item.id_nguoi_dung })" class="btn btn-danger mx-1">
+                                            <i class="fas fa-trash-alt text-white"></i>
+                                        </a>
 
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
 
                             }
                         </tbody>
@@ -121,7 +127,9 @@
                 </div>
             </div>
 
-
+            <div class="text-center">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+            </div>
         </div>
 
     </div>

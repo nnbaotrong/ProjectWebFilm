@@ -1961,7 +1961,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\AdminBinhLuan\" />
     <Folder Include="Areas\Admin\Views\AdminDanhGia\" />
     <Folder Include="HinhDienVien\" />
     <Folder Include="HinhPhim\" />
@@ -1989,6 +1988,9 @@
     <Content Include="Areas\Admin\Views\AdminPhim\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminPhim\Search.cshtml" />
     <Content Include="Areas\Admin\Views\AdminPhim\ShowComment.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminNguoiDung\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBinhLuan\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBinhLuan\Delete.cshtml" />
     <None Include="Models\dbWebFilm.dbml.layout">
       <DependentUpon>dbWebFilm.dbml</DependentUpon>
     </None>

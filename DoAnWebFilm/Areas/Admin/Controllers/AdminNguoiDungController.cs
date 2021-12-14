@@ -4,19 +4,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList;
+using PagedList.Mvc;
 namespace DoAnWebFilm.Areas.Admin.Controllers
 {
     public class AdminNguoiDungController : Controller
     {
         dbWebFilmDataContext db = new dbWebFilmDataContext();
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
             {
                 return RedirectToAction("Login", "AdminLogin");
             }
-            return View(db.NguoiDungs.ToList());
+            int pageNumber = (page ?? 1);
+            int pageSize = 10;
+
+            return View(db.NguoiDungs.ToList().OrderBy(n => n.id_nguoi_dung).ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult Search(String searchND, int? page)
+        {
+            if (Session["TaiKhoanAdmin"] == null || Session["TaiKhoanAdmin"].ToString() == "")
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
+
+            int pageNumber = (page ?? 1);
+            int pageSize = 10;
+
+            var ngdung = from p in db.NguoiDungs
+                       where p.tai_khoan.Contains(searchND)
+                       select p;
+            return View(ngdung.OrderBy(n => n.id_nguoi_dung).ToPagedList(pageNumber, pageSize));
         }
 
         // Create NguoiDung
