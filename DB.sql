@@ -188,7 +188,11 @@ delete NguoiDung
 DBCC CHECKIDENT (NguoiDung, RESEED, 0)
 DBCC CHECKIDENT (NguoiDung)
 insert into NguoiDung values (N'Nguyễn Ngọc Bảo Trọng',N'nnbaotrong',N'123','nnbaotrong@gmail.com')
-insert into NguoiDung values (N'Phạm Việt An',N'viet123',N'123','viet123g@gmail.com')
+insert into NguoiDung values (N'Đinh Hoàng Long',N'long123',N'123','long123g@gmail.com')
+insert into NguoiDung values (N'Nguyễn Phan Hoài Rin',N'rin123',N'123','rin123g@gmail.com')
+insert into NguoiDung values (N'Huỳnh Thế Lữ',N'lu123',N'123','lu123g@gmail.com')
+insert into NguoiDung values (N'Nguyễn Ngọc Hoàng',N'hoang123',N'123','hoang123g@gmail.com')
+insert into NguoiDung values (N'Linh Nguyễn',N'linh123',N'123','linh123g@gmail.com')
 
 
 delete AdminPro
@@ -342,8 +346,61 @@ insert into Phim_Dienvien values (25,5)
 delete BinhLuan
 DBCC CHECKIDENT (BinhLuan, RESEED, 0)
 DBCC CHECKIDENT (BinhLuan)
-insert into BinhLuan values (1,1,N'Phim quá hay','08/21/2021')
-insert into BinhLuan values (2,1,N'Khi nào mới ra phim mới','08/21/2021')
+
+
+insert into BinhLuan values (1,1,N'Khi nào mới ra phim mới','08/22/2021')
+insert into BinhLuan values (1,2,N'Khi nào mới ra phim mới','08/22/2021')
+insert into BinhLuan values (1,3,N'Khi nào mới ra phim mới','08/22/2021')
+insert into BinhLuan values (1,4,N'Khi nào mới ra phim mới','08/22/2021')
+insert into BinhLuan values (1,5,N'Khi nào mới ra phim mới','08/22/2021')
+
+
+insert into BinhLuan values (2,1,N'Hóng cả tuần mới có một tập , đúng đỉnh','10/23/2021')
+insert into BinhLuan values (2,2,N'Hóng cả tuần mới có một tập , đúng đỉnh','10/23/2021')
+insert into BinhLuan values (2,3,N'Hóng cả tuần mới có một tập , đúng đỉnh','10/23/2021')
+insert into BinhLuan values (2,4,N'Hóng cả tuần mới có một tập , đúng đỉnh','10/23/2021')
+insert into BinhLuan values (2,5,N'Hóng cả tuần mới có một tập , đúng đỉnh','10/23/2021')
+insert into BinhLuan values (2,6,N'Hóng cả tuần mới có một tập , đúng đỉnh','10/23/2021')
+
+
+insert into BinhLuan values (3,1,N'Ra nhiều tập hơn đi ad ơi','08/24/2021')
+insert into BinhLuan values (3,2,N'Ra nhiều tập hơn đi ad ơi','08/24/2021')
+insert into BinhLuan values (3,3,N'Ra nhiều tập hơn đi ad ơi','08/24/2021')
+insert into BinhLuan values (3,4,N'Ra nhiều tập hơn đi ad ơi','08/24/2021')
+insert into BinhLuan values (3,5,N'Ra nhiều tập hơn đi ad ơi','08/24/2021')
+insert into BinhLuan values (3,6,N'Ra nhiều tập hơn đi ad ơi','08/24/2021')
+
+
+
+insert into BinhLuan values (4,1,N'Nhìn nhân vật đẹp thật, mê mỗi bạn nữ chính','08/25/2021')
+insert into BinhLuan values (4,2,N'Nhìn nhân vật đẹp thật, mê mỗi bạn nữ chính','08/25/2021')
+insert into BinhLuan values (4,3,N'Nhìn nhân vật đẹp thật, mê mỗi bạn nữ chính','08/25/2021')
+insert into BinhLuan values (4,4,N'Nhìn nhân vật đẹp thật, mê mỗi bạn nữ chính','08/25/2021')
+insert into BinhLuan values (4,5,N'Nhìn nhân vật đẹp thật, mê mỗi bạn nữ chính','08/25/2021')
+insert into BinhLuan values (4,6,N'Nhìn nhân vật đẹp thật, mê mỗi bạn nữ chính','08/25/2021')
+
+insert into BinhLuan values (5,1,N'Phim hay và cũng hài nữa , cười bể bụng','08/26/2021')
+insert into BinhLuan values (5,2,N'Phim hay và cũng hài nữa , cười bể bụng','08/26/2021')
+insert into BinhLuan values (5,3,N'Phim hay và cũng hài nữa , cười bể bụng','08/26/2021')
+insert into BinhLuan values (5,4,N'Phim hay và cũng hài nữa , cười bể bụng','08/26/2021')
+insert into BinhLuan values (5,5,N'Phim hay và cũng hài nữa , cười bể bụng','08/26/2021')
+insert into BinhLuan values (5,6,N'Phim hay và cũng hài nữa , cười bể bụng','08/26/2021')
+
+
+
+insert into BinhLuan values (6,1,N'Phải nói là đỉnh của đỉnh','08/27/2021')
+insert into BinhLuan values (6,2,N'Phải nói là đỉnh của đỉnh','08/27/2021')
+insert into BinhLuan values (6,3,N'Phải nói là đỉnh của đỉnh','08/27/2021')
+insert into BinhLuan values (6,4,N'Phải nói là đỉnh của đỉnh','08/27/2021')
+insert into BinhLuan values (6,5,N'Phải nói là đỉnh của đỉnh','08/27/2021')
+insert into BinhLuan values (6,6,N'Phải nói là đỉnh của đỉnh','08/27/2021')
+
+insert into BinhLuan values (7,1,N'Phim quá hay','08/21/2021')
+insert into BinhLuan values (7,2,N'Phim quá hay','08/21/2021')
+insert into BinhLuan values (7,3,N'Phim quá hay','08/21/2021')
+insert into BinhLuan values (7,4,N'Phim quá hay','08/21/2021')
+insert into BinhLuan values (7,5,N'Phim quá hay','08/21/2021')
+insert into BinhLuan values (7,6,N'Phim quá hay','08/21/2021')
 
 select p.id_phim, p.ten_phim, l.ten_loai 
 from Phim p INNER JOIN ChiTietLoai ctl 
